@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#325453">
+  <meta name="description" content="FoundIt is a campus registry prototype for lost and found belongings.">
+  <title>FoundIt — Campus Lost &amp; Found</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="index.html" aria-label="FoundIt home">Found<span>It</span><i aria-hidden="true"></i></a>
+      <p class="tagline">A campus registry for lost and found belongings.</p>
+      <nav class="header-nav" aria-label="Site navigation">
+        <a href="#registry">Browse registry</a>
+        <a href="#report">Report an item</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro" aria-labelledby="page-title">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="status-dot"></span> CAMPUS LOST &amp; FOUND</p>
+        <h1 id="page-title">A little easier<br>to find your way back.</h1>
+        <p class="intro-text">Log a lost or found belonging, then check the registry for a match. Please verify ownership before arranging a return.</p>
+      </div>
+      <aside class="demo-note" aria-label="Prototype information">
+        <span class="note-mark" aria-hidden="true">i</span>
+        <div><strong>Demonstration data</strong><p>This frontend is a standalone prototype. Entries live in this page's memory and reset when you refresh. It is not connected to the C program.</p></div>
+      </aside>
+    </section>
+
+    <div class="workspace-grid">
+      <section class="report-panel panel" id="report" aria-labelledby="report-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow">ADD TO THE REGISTRY</p><h2 id="report-title">Report an item</h2></div>
+          <span class="step-number">01</span>
+        </div>
+        <p class="panel-description">Share a few details to add an entry to this demo.</p>
+        <form id="item-form" novalidate>
+          <label for="item-name">Item name</label>
+          <input id="item-name" name="name" type="text" maxlength="49" placeholder="e.g. Blue water bottle" autocomplete="off" required>
+          <p class="field-error" id="name-error"></p>
+
+          <label for="item-location">Where was it lost or found?</label>
+          <input id="item-location" name="location" type="text" maxlength="49" placeholder="e.g. Library, second floor" autocomplete="off" required>
+          <p class="field-error" id="location-error"></p>
+
+          <fieldset class="type-fieldset">
+            <legend>Entry type</legend>
+            <div class="type-options">
+              <label class="type-option"><input type="radio" name="type" value="Lost" checked><span>Lost</span></label>
+              <label class="type-option"><input type="radio" name="type" value="Found"><span>Found</span></label>
+            </div>
+          </fieldset>
+          <button class="button button-primary submit-button" type="submit">Add to registry <span aria-hidden="true">→</span></button>
+          <p class="form-feedback" id="form-feedback" role="status" aria-live="polite"></p>
+        </form>
+        <div class="privacy-hint"><span aria-hidden="true">↳</span> Demo entries are kept in memory only.</div>
+      </section>
+
+      <section class="registry-panel" id="registry" aria-labelledby="registry-title">
+        <div class="registry-topline">
+          <div><p class="eyebrow">CAMPUS ITEMS</p><h2 id="registry-title">The registry</h2></div>
+          <span class="registry-count" id="registry-count">0 entries</span>
+        </div>
+        <div class="registry-toolbar">
+          <label class="search-box" for="search-input"><span class="search-icon" aria-hidden="true"></span><input id="search-input" type="search" placeholder="Search by ID or item name" autocomplete="off"><kbd>/</kbd></label>
+        </div>
+        <div class="search-summary" id="search-summary" aria-live="polite"></div>
+        <div class="registry-groups" id="registry-groups">
+          <section class="registry-group" aria-labelledby="found-heading">
+            <div class="group-heading"><h3 id="found-heading">Found</h3><span id="found-count">0 items</span></div>
+            <div class="item-list" id="found-list" aria-live="polite"></div>
+          </section>
+          <section class="registry-group" aria-labelledby="lost-heading">
+            <div class="group-heading"><h3 id="lost-heading">Lost</h3><span id="lost-count">0 items</span></div>
+            <div class="item-list" id="lost-list" aria-live="polite"></div>
+          </section>
+        </div>
+        <div class="empty-state search-empty" id="search-empty" hidden>
+          <div class="empty-icon" aria-hidden="true">?</div>
+          <h3>No matches found</h3>
+          <p>Try another item name or ID.</p>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer">
+      <p>FoundIt <span>·</span> A classroom prototype for a campus lost-and-found registry.</p>
+      <nav aria-label="Legal information"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+    </footer>
+  </main>
+</body>
+</html>
